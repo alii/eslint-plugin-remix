@@ -1,8 +1,8 @@
-import {noVariables} from './rules/example';
+import {nodeServerImports} from './rules/node-server-imports';
 
 const config = {
 	rules: {
-		'no-variables': noVariables,
+		'node-server-imports': nodeServerImports,
 	},
 };
 
