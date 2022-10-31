@@ -1,13 +1,7 @@
 import {stripIndent} from 'common-tags';
 import {RuleTester} from 'eslint';
 import plugin from '../src';
-
-const rules = new RuleTester({
-	parserOptions: {
-		ecmaVersion: 2020,
-		sourceType: 'module',
-	},
-});
+import {tester} from './rule-tester';
 
 const GOOD_CODE_CASES: RuleTester.ValidTestCase[] = [
 	{
@@ -55,7 +49,7 @@ const BAD_CODE_CASES: RuleTester.InvalidTestCase[] = [
 	},
 ];
 
-rules.run('node-server-imports', plugin.rules['node-server-imports'], {
+tester.run('node-server-imports', plugin.rules['node-server-imports'], {
 	valid: GOOD_CODE_CASES,
 	invalid: BAD_CODE_CASES,
 });
