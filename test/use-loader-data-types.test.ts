@@ -1,17 +1,8 @@
-import {ESLintUtils} from '@typescript-eslint/utils';
 import plugin from '../src';
+import {tester} from './rule-tester';
 
-const ruleTester = new ESLintUtils.RuleTester({
-	parser: '@typescript-eslint/parser',
-});
-
-ruleTester.run('use-loader-data-types', plugin.rules['use-loader-data-types'], {
-	valid: [
-		'useEffect()',
-		'useState()',
-		'useOtherLoader()',
-		'userLoaderData<typeof loader>()',
-	],
+tester.run('use-loader-data-types', plugin.rules['use-loader-data-types'], {
+	valid: ['useEffect()', 'useState()', 'useOtherLoader()', 'userLoaderData<typeof loader>()'],
 	invalid: [
 		{
 			code: 'useLoaderData()',

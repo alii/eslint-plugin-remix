@@ -1,9 +1,9 @@
+import {ESLintUtils} from '@typescript-eslint/utils';
 import {stripIndent} from 'common-tags';
-import {RuleTester} from 'eslint';
 import plugin from '../src';
 import {tester} from './rule-tester';
 
-const GOOD_CODE_CASES: RuleTester.ValidTestCase[] = [
+const GOOD_CODE_CASES: ESLintUtils.ValidTestCase<never[]>[] = [
 	{
 		code: stripIndent`
             import path from 'path';
@@ -21,7 +21,7 @@ const GOOD_CODE_CASES: RuleTester.ValidTestCase[] = [
 	},
 ];
 
-const BAD_CODE_CASES: RuleTester.InvalidTestCase[] = [
+const BAD_CODE_CASES: ESLintUtils.InvalidTestCase<'INVALID_NODE_IMPORT', never[]>[] = [
 	{
 		code: stripIndent`
             import path from 'path';

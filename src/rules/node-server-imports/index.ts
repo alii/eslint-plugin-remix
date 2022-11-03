@@ -1,6 +1,6 @@
-import {INVALID_NODE_IMPORT, MOVE_TO_SERVER_FILE} from './errors';
-import builtinModules from 'builtin-modules/static';
 import {ESLintUtils} from '@typescript-eslint/utils';
+import builtinModules from 'builtin-modules/static';
+import {INVALID_NODE_IMPORT, MOVE_TO_SERVER_FILE} from './errors';
 
 export const nodeServerImports = ESLintUtils.RuleCreator.withoutDocs({
 	create: context => {
@@ -20,9 +20,7 @@ export const nodeServerImports = ESLintUtils.RuleCreator.withoutDocs({
 
 				const filename = context.getFilename();
 
-				const isServer = ['ts', 'tsx', 'js', 'jsx'].some(ext =>
-					filename.endsWith(`.server.${ext}`),
-				);
+				const isServer = ['ts', 'tsx', 'js', 'jsx'].some(ext => filename.endsWith(`.server.${ext}`));
 
 				if (isServer) {
 					return;
@@ -51,8 +49,7 @@ export const nodeServerImports = ESLintUtils.RuleCreator.withoutDocs({
 		},
 		hasSuggestions: true,
 		docs: {
-			description:
-				'Ensures that node imports are only used in .server.{ts,js,tsx,jsx} files',
+			description: 'Ensures that node imports are only used in .server.{ts,js,tsx,jsx} files',
 			recommended: 'error',
 		},
 		type: 'problem',

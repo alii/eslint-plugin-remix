@@ -1,8 +1,5 @@
-import {RuleTester} from 'eslint';
+import {ESLintUtils} from '@typescript-eslint/utils';
 
-export const tester = new RuleTester({
-	parserOptions: {
-		ecmaVersion: 2020,
-		sourceType: 'module',
-	},
+export const tester = new ESLintUtils.RuleTester({
+	parser: '@typescript-eslint/parser',
 });
