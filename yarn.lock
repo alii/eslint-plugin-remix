@@ -2205,9 +2205,6 @@ __metadata:
     ts-node: ^10.7.0
     tsup: ^5.12.0
     typescript: ^4.6.2
-  peerDependencies:
-    "@typescript-eslint/parser": ^5
-    "@typescript-eslint/utils": ^5
   languageName: unknown
   linkType: soft
 
