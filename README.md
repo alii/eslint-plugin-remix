@@ -13,3 +13,7 @@ An ESLint plugin for [Remix](https://remix.run)
 ### `node-server-imports`:
 
 Ensures that all imports for known node builtins are only ever used in `.server.ts` files.
+
+### `use-loader-data-types`:
+
+Ensures that `useLoaderData` is given a type parameter to explicitly declare its data type.
