@@ -5,7 +5,6 @@ const config = {
 	rules: {
 		'use-loader-data-types': useLoaderDataTypes,
 		'node-server-imports': nodeServerImports,
-		'data-function-no-object-return': null,
 	},
 };
 

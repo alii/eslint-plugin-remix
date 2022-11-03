@@ -19,6 +19,7 @@ export const useLoaderDataTypes = ESLintUtils.RuleCreator.withoutDocs({
 						messageId: 'missing',
 						node,
 					});
+
 					return;
 				}
 
@@ -69,6 +70,7 @@ export const useLoaderDataTypes = ESLintUtils.RuleCreator.withoutDocs({
 		schema: [],
 	},
 });
+
 function getTypeParameterTypeQueryName(node: TSESTree.TypeNode) {
 	return (
 		node.type === AST_NODE_TYPES.TSTypeQuery &&

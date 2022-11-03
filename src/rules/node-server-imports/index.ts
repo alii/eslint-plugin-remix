@@ -1,8 +1,8 @@
-import {Rule} from 'eslint';
-import {INVALID_NODE_IMPORT} from './errors';
+import {INVALID_NODE_IMPORT, MOVE_TO_SERVER_FILE} from './errors';
 import builtinModules from 'builtin-modules/static';
+import {ESLintUtils} from '@typescript-eslint/utils';
 
-export const nodeServerImports: Rule.RuleModule = {
+export const nodeServerImports = ESLintUtils.RuleCreator.withoutDocs({
 	create: context => {
 		return {
 			ImportDeclaration(node) {
@@ -33,8 +33,8 @@ export const nodeServerImports: Rule.RuleModule = {
 					messageId: 'INVALID_NODE_IMPORT',
 					suggest: [
 						{
-							desc: 'Move this logic to a .server.ts file and import that file instead.',
-							fix(fixer) {
+							messageId: 'MOVE_TO_SERVER_FILE',
+							fix: fixer => {
 								return [fixer.remove(node)];
 							},
 						},
@@ -45,14 +45,18 @@ export const nodeServerImports: Rule.RuleModule = {
 	},
 
 	meta: {
-		messages: {INVALID_NODE_IMPORT},
+		messages: {
+			INVALID_NODE_IMPORT,
+			MOVE_TO_SERVER_FILE,
+		},
 		hasSuggestions: true,
 		docs: {
 			description:
 				'Ensures that node imports are only used in .server.{ts,js,tsx,jsx} files',
-			recommended: true,
-			category: 'Possible Problems',
+			recommended: 'error',
 		},
 		type: 'problem',
+		schema: [],
 	},
-};
+	defaultOptions: [],
+});
