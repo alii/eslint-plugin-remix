@@ -16,4 +16,13 @@ Ensures that all imports for known node builtins are only ever used in `.server.
 
 ### `use-loader-data-types`:
 
-Ensures that `useLoaderData` is given a type parameter to explicitly declare its data type.
+When using TypeScript, this rule ensures that `useLoaderData` is passed a generic type of the loader function to explicitly declare what it returns. It is recommended you use this with [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks).
+
+```ts
+export const loader = ...;
+
+export default function Home() {
+  // Ensures that `<typeof loader>` exists here
+  const data = useLoaderData<typeof loader>();
+}
+```
